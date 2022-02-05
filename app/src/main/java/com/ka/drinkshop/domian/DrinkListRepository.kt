@@ -9,5 +9,5 @@ interface DrinkListRepository {
 
     fun editDrink(drinkItem: DrinkItem)
 
-    fun getIdDrink (getId:DrinkItem):DrinkItem
+    fun getIdDrink (getId:Int):DrinkItem
 }
