@@ -1,7 +1,8 @@
-package com.ka.drinkshop
+package com.ka.drinkshop.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ka.drinkshop.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
