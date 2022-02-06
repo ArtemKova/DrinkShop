@@ -9,6 +9,14 @@ object DrinkListRepositoryImpl:DrinkListRepository {
 
     private val drinkList = mutableListOf<DrinkItem>()
     private var autoIncrementId = 0
+
+    init {
+        for (i in 0 until 10){
+            val item = DrinkItem("cat $i","name ${i+10}", "40 grad","0.5 l", true)
+            addDrink(item)
+        }
+    }
+
     override fun addDrink(drinkItem: DrinkItem) {
 
         if (drinkItem.id == UNDEFINDED_ID) {
