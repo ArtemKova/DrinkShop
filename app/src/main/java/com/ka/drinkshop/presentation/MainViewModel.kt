@@ -8,7 +8,7 @@ import com.ka.drinkshop.domian.DrinkItem
 import com.ka.drinkshop.domian.EditDrinkInteractor
 import com.ka.drinkshop.domian.GetDrinkListInteractor
 
-class MainViewModel:ViewModel() {
+class MainViewModel : ViewModel() {
 
     private val repository = DrinkListRepositoryImpl
 
@@ -16,10 +16,21 @@ class MainViewModel:ViewModel() {
     private val delDrinkInteractor = DelDrinkInteractor(repository)
     private val editDrinkInteractor = EditDrinkInteractor(repository)
 
- val drinkList = MutableLiveData<List<DrinkItem>>()
+    val drinkList = MutableLiveData<List<DrinkItem>>()
 
-    fun getDrinkList(){
-       val list = getDrinkListInteractor.getDrinkList()
-       drinkList.postValue(list)
+    fun getDrinkList() {
+        val list = getDrinkListInteractor.getDrinkList()
+        drinkList.postValue(list)
+    }
+
+    fun delDrinkInterator(drinkItem: DrinkItem) {
+        delDrinkInteractor.delDrink(drinkItem)
+        getDrinkList()
+    }
+
+    fun editDrinkInteractor(drinkItem: DrinkItem){
+       val newDrinkItem = drinkItem.copy(enabled = !drinkItem.enabled)
+        editDrinkInteractor.editDrink(newDrinkItem)
+        getDrinkList()
     }
 }
